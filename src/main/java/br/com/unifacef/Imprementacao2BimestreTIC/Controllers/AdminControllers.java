@@ -1,7 +1,7 @@
 package br.com.unifacef.Imprementacao2BimestreTIC.Controllers;
 
 import br.com.unifacef.Imprementacao2BimestreTIC.Models.Admin;
-import br.com.unifacef.Imprementacao2BimestreTIC.Repository.AdminInterface;
+import br.com.unifacef.Imprementacao2BimestreTIC.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class AdminControllers {
     @Autowired
-    AdminInterface injecao;
+    AdminRepository injecao;
 
     @GetMapping("/Admin")
     public List<Admin> get(){

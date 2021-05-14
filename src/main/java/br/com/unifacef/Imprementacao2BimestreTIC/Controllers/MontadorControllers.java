@@ -1,7 +1,7 @@
 package br.com.unifacef.Imprementacao2BimestreTIC.Controllers;
 
 import br.com.unifacef.Imprementacao2BimestreTIC.Models.Montador;
-import br.com.unifacef.Imprementacao2BimestreTIC.Repository.MontadorInterface;
+import br.com.unifacef.Imprementacao2BimestreTIC.Repository.MontadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 @RestController
 public class MontadorControllers  {
     @Autowired
-    MontadorInterface injecao;
+    MontadorRepository injecao;
 
     @GetMapping("/Montador")
     public List<Montador> get(){
