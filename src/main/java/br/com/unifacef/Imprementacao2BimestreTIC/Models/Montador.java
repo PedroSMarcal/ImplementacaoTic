@@ -11,6 +11,7 @@ public class Montador extends Pessoa implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String usuario;
     private String senha;
     private float valorTotalRecebido;
@@ -58,6 +59,10 @@ public class Montador extends Pessoa implements Serializable {
         this.qntdProjetosInstaldos = qntdProjetosInstaldos;
     }
 
+    public final void setId(Long id) {
+        this.id = id;
+    }
+
     // GETTERS
     public String getUsuario() {
         return this.usuario;
@@ -81,5 +86,9 @@ public class Montador extends Pessoa implements Serializable {
 
     public int getQntdProjetosInstaldos() {
         return this.qntdProjetosInstaldos;
+    }
+
+    public Long getId() {
+        return this.id;
     }
 }

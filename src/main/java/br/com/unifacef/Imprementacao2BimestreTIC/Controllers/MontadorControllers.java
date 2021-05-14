@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class MontadorControllers  {
@@ -31,6 +32,10 @@ public class MontadorControllers  {
 
     @PutMapping("/Montador/{id}")
     public String alter(@RequestBody Montador montador){
+        Optional<Montador> validarId = injecao.findById(montador.getId());
+        if (!validarId.isPresent()) {
+            return "Não existe";
+        }
         injecao.save(montador);
         return "Alterado Com Sucesso";
     }
