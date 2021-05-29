@@ -1,21 +1,65 @@
-package br.com.unifacef.Implementacao.models;
+package br.com.unifacef.Imprementacao2BimestreTIC.Models;
 
-import lombok.Data;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
-@Data
+@Entity
 @Table(name = "Admin")
-public class Admin extends Users implements Serializable {
-    public static final long serialVersionUID = -1465127544951190990L;
+public class Admin extends Pessoa implements Serializable {
+    public static final long serialVersionUID = 7045819192897741853L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private boolean permission_create_adm;
-    private boolean active;
+    private String usuario;
+    private String senha;
+    private int quantidadeDeVendas;
+    private float valorTotalProjetos;
+
+    //CONSTRUCTORS
+    public Admin() {
+        super();
+    }
+
+    public Admin(String name, String cellphone, Date createdAt, String usuario, String senha, int quantidadeDeVendas, float valorTotalProjetos) {
+        super(name, cellphone, createdAt);
+        this.setUsuario(usuario);
+        this.setSenha(senha);
+        this.setQuantidadeDeVendas(quantidadeDeVendas);
+        this.setValorTotalProjetos(valorTotalProjetos);
+    }
+
+    //SETTERS
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setQuantidadeDeVendas(int quantidadeDeVendas) {
+        this.quantidadeDeVendas = quantidadeDeVendas;
+    }
+
+    public void setValorTotalProjetos(float valorTotalProjetos) {
+        this.valorTotalProjetos = valorTotalProjetos;
+    }
+
+    //GETTERS
+    public String getUsuario() {
+        return this.usuario;
+    }
+
+    public String getSenha() {
+        return this.senha;
+    }
+
+    public int getQuantidadeDeVendas() {
+        return this.quantidadeDeVendas;
+    }
+
+    public float getValorTotalProjetos() {
+        return this.valorTotalProjetos;
+    }
 }
