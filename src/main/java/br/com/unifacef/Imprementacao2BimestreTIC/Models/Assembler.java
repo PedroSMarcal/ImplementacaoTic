@@ -9,13 +9,12 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Data
-@Table(name = "Admin")
-public class Admin extends Users implements Serializable {
-    public static final long serialVersionUID = -1465127544951190990L;
+@Table(name = "Assembler")
+public class Assembler extends Users implements Serializable {
+    public static long serialVersionUID = 4191476058285415484L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private boolean permission_create_adm;
-    private boolean active;
+    private String cellphone;
 }

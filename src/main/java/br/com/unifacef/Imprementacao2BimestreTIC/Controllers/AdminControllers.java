@@ -1,37 +1,43 @@
-package br.com.unifacef.Imprementacao2BimestreTIC.Controllers;
+package br.com.unifacef.Implementacao.Controllers;
 
-import br.com.unifacef.Imprementacao2BimestreTIC.Models.Admin;
-import br.com.unifacef.Imprementacao2BimestreTIC.Repository.AdminRepository;
+import br.com.unifacef.Implementacao.Repository.AdminDTO;
+import br.com.unifacef.Implementacao.models.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@CrossOrigin("http://localhost/127.0.0.1:5500/Admin")
 public class AdminControllers {
     @Autowired
-    AdminRepository injecao;
+    AdminDTO AdminRepository;
 
-    @GetMapping("/Admin")
+    @GetMapping("/")
     public List<Admin> get(){
-        return injecao.findAll();
+        return AdminRepository.findAll();
     }
 
-    @DeleteMapping("/Admin/{id}")
-    public String delete(@PathVariable Long id){
-        injecao.deleteById(id);
-        return "Deletado com sucesso";
+    @PostMapping("/")
+    public String put(@RequestBody Admin admin){
+        Optional<Admin> IdValuate = AdminRepository.findById(admin.getId());
+        if (!IdValuate.isPresent()){
+            return "Don't exist the " + admin.toString();
+        }
+        AdminRepository.save(admin);
+        return "Admin alter successful" + admin.toString();
     }
 
-    @PostMapping("/Admin")
+    @DeleteMapping("/{id}")
+    public String del(@PathVariable Long id){
+        AdminRepository.deleteById(id);
+        return "Deleted with successful";
+    }
+
+    @PutMapping("/")
     public String add(@RequestBody Admin admin){
-        injecao.save(admin);
-        return "Sucesso";
-    }
-
-    @PutMapping("/Admin")
-    public String alter(@RequestBody Admin admin){
-        injecao.save(admin);
-        return "Alterado com sucesso";
+        AdminRepository.save(admin);
+        return "Cliente add with successful";
     }
 }
